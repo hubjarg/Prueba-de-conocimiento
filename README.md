@@ -27,6 +27,7 @@ java -jar ClaroTest.jar Person.txt
 
 
 ## Ejemplo de un archivo de entrada
+Disponible en el repositorio para descargar.
 ```bash
 
 // Person.txt
