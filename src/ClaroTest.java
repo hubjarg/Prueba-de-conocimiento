@@ -11,9 +11,6 @@ public class ClaroTest {
                 return;
             }
                  String rutaDelArchivo = args[0];
-
-      
-
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(rutaDelArchivo));
             StringBuilder contenido = new StringBuilder();
@@ -24,7 +21,6 @@ public class ClaroTest {
                 contenido.append(linea).append("\n");
             }
             bufferedReader.close();
-
                 String strContenido = contenido.toString();
                 Pattern patronBuscaClase = Pattern.compile("(private|protected|public|static)\\s+class\\s+(\\w+)\\s*\\{");
                 Matcher coicidenciapatronClase = patronBuscaClase.matcher(strContenido);
@@ -45,11 +41,8 @@ public class ClaroTest {
                         String scope = coicidenciaPatronAtributo.group(1); 
                         String signatur = " Type: ".concat(coicidenciaPatronAtributo.group(2));
                         String nombre = coicidenciaPatronAtributo.group(3); 
-
-                       
                         String vari = "A";
                         dibujarTablaFila(nombre, vari, scope, signatur);
-
                     }
                    //IMPRIMIR ROWS
                    Pattern patronBuscaMetodo = Pattern.compile("(public|protected|private|static)\\s+(\\w+)\\s+(\\w+)\\s*\\((.*?)\\)");
@@ -62,11 +55,7 @@ public class ClaroTest {
                        String params = coicidenciaPatronMetodo.group(4);
                        String vari = "M";
                        String signatur =" RTYPE: ".concat(signature).concat(", PARAMS:").concat(params);
-
-                      
-                       dibujarTablaFila(name, vari, scope, signatur );
-
-                                                                                 
+                       dibujarTablaFila(name, vari, scope, signatur );                                             
                    }
 
                 
@@ -75,14 +64,8 @@ public class ClaroTest {
              } catch (IOException e) {
                  System.out.println("Error al leer el archivo: " + e.getMessage());
              }
-              
     }
 
-
-
-
-
-    
     private static void dibujarTablaEncabezado() {
         System.out.format(" -------------------------------------------------------------------------------------------%n");
         System.out.format("| NAME            | VARI            | SCOPE      | SIGNATURE                               |%n");
